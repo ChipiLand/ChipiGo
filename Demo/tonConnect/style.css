@@ -1,0 +1,17 @@
+body {
+    width: 1000px;
+    margin: 0 auto;
+    font-family: Roboto, sans-serif;
+  }
+  .section {
+    padding: 20px; margin: 20px;
+    border: 2px #AEFF6A solid; border-radius: 8px;
+  }
+  #tonconnect-buttons>button {
+    display: block;
+    padding: 8px; margin-bottom: 8px;
+    font-size: 18px; font-family: inherit;
+  }
+  .featured {
+    font-weight: 800;
+  }

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+        <title>TON Connect</title>
+        <body>
+            <div id="content" style="position: absolute; top: 2%; right: 2%;"></div>
+            
+            <script>
+                const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+                    manifestUrl: 'https://blue-deliberate-aardwolf-765.mypinata.cloud/ipfs/QmUTZuY4cqpuSqwMrGy7D1emfd7S3J12wXnEpUe52tWMD8',
+                  //  buttonRootId: 'connect'
+                });
+                connectToWallet().catch(error => {
+                    console.error("Error connecting to wallet:", error);
+                });
+                async function connectToWallet() {
+                    const connectedWallet = await tonConnectUI.connectWallet();
+                    // 如果需要，可以对connectedWallet做一些事情
+                    console.log(connectedWallet);
+                }
+
+                async function transaction() {
+                    const transaction = {
+                        validUntil: Math.round(Date.now() / 1000) + 10,
+                        messages: [
+                            {
+                                address: "EQB8OeLHV5E-y8pYsZhLEN3iUQ1WUpEubj3ReyJIFecHPoTe",
+                                amount: "10000000"
+                            }
+                        ]
+                    };
+
+                    try{
+                        await tonConnectUI.sendTransaction(transaction);
+                    } catch (e) {
+                        console.error(e);
+                    }
+                }
+            </script>
+        </body>
+    </head>
+</html>
